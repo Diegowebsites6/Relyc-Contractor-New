@@ -1,0 +1,19 @@
+{
+  "name": "relyc-contractor-site",
+  "version": "3.0.0",
+  "private": true,
+  "description": "Relyc Contractor Corp — static marketing site with scroll-scrubbed video storytelling.",
+  "type": "module",
+  "scripts": {
+    "build": "node build/build.mjs",
+    "serve": "node build/tools/serve.mjs",
+    "dev": "npm run build && npm run serve",
+    "check": "node build/tools/check.mjs",
+    "frames": "bash build/tools/extract-frames.sh",
+    "og": "bash build/tools/make-og.sh",
+    "pdf": "node build/tools/make-pdf.mjs assets/docs/relyc-capability-statement.pdf"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
