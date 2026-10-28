@@ -135,8 +135,20 @@
     var img = this.set.nearest(i);
     if (!img) return;
     this.frame = i;
+    this.fit(img);
     this.ctx.drawImage(img, 0, 0, this.canvas.width, this.canvas.height);
     if (!this.live) { this.live = true; this.stage.classList.add('is-live'); }
+  };
+
+  // Match the canvas to the frames' real size, so each act can ship at its
+  // own resolution (and sharper footage needs no code change).
+  Film.prototype.fit = function (img) {
+    var w = img.naturalWidth, h = img.naturalHeight;
+    if (!w || (this.canvas.width === w && this.canvas.height === h)) return;
+    this.canvas.width = w;
+    this.canvas.height = h;
+    this.ctx.imageSmoothingEnabled = true;
+    this.ctx.imageSmoothingQuality = 'high';
   };
 
   Film.prototype.setHeight = function () {
@@ -207,6 +219,7 @@
     var img = new Image();
     img.onload = function () {
       if (!self.ctx) return;
+      self.fit(img);
       self.ctx.drawImage(img, 0, 0, self.canvas.width, self.canvas.height);
       self.stage.classList.add('is-live');
     };

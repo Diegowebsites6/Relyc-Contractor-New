@@ -312,7 +312,11 @@
       var n = track.children.length;
       track.innerHTML = track.innerHTML + track.innerHTML;
       // The second copy only exists for the seamless loop — hide it from assistive tech
-      for (var i = n; i < track.children.length; i++) track.children[i].setAttribute('aria-hidden', 'true');
+      for (var i = n; i < track.children.length; i++) {
+        var clone = track.children[i];
+        clone.setAttribute('aria-hidden', 'true');
+        if (clone.tagName === 'A') clone.setAttribute('tabindex', '-1');
+      }
       track.dataset.cloned = 'true';
       var speed = parseFloat(m.dataset.marqueeSpeed || '55');
       var width = track.scrollWidth / 2;

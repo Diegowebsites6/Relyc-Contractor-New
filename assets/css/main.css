@@ -359,11 +359,26 @@ body.menu-open .drawer__link{animation:drawerIn .55s var(--ease-out) forwards}
 .film__panels{position:absolute;inset:0;padding:calc(var(--header-h) + 1rem) 0 5.5rem}
 .film__panel{
   position:absolute;inset:0;display:grid;align-items:center;
-  opacity:0;pointer-events:none;
+  opacity:0;visibility:hidden;
   padding:calc(var(--header-h) + 1rem) 0 5.5rem;
 }
 .film__panel .wrap{width:100%}
-.film__panel.is-on{pointer-events:auto}
+/* Hero (first panel) — evenly stepped rhythm */
+.film-title.film-title--hero{max-width:none;font-size:clamp(2.3rem,min(6.4vw,10vh),5.6rem);line-height:.92}
+.film-sectors{
+  margin-top:clamp(1rem,2vh,1.4rem);font-family:'Archivo',sans-serif;font-weight:600;font-stretch:110%;
+  font-size:clamp(.95rem,1.5vw,1.3rem);letter-spacing:.14em;text-transform:uppercase;color:var(--amber-hi);
+  text-shadow:0 1px 18px rgba(0,0,0,.6);
+}
+.film-sectors span{margin-inline:.45em;color:var(--t-mid)}
+@media(max-width:480px){ .film-sectors{font-size:3.4vw;letter-spacing:.05em;font-stretch:100%;white-space:nowrap} .film-sectors span{margin-inline:.3em} }
+.film-sub--hero{margin-top:clamp(1.1rem,2.4vh,1.6rem);max-width:46ch}
+.film-tagline{
+  margin-top:clamp(.8rem,1.6vh,1.1rem);font-family:'Archivo',sans-serif;font-weight:600;
+  font-size:clamp(1.05rem,1.5vw,1.3rem);color:#fff;text-shadow:0 1px 18px rgba(0,0,0,.6);
+}
+.film-tagline em{font-style:italic}
+.film-cta{margin-top:clamp(1.6rem,3.6vh,2.4rem)}
 .film__progress{
   position:absolute;bottom:1.8rem;
   left:max(var(--gutter),calc((100% - var(--maxw-wide)) / 2 + var(--gutter)));
@@ -545,11 +560,16 @@ body.menu-open .drawer__link{animation:drawerIn .55s var(--ease-out) forwards}
   font-size:clamp(1rem,1.5vw,1.22rem);line-height:1.1;letter-spacing:.01em;text-transform:uppercase;
 }
 .client__name{
-  font-family:'JetBrains Mono',monospace;font-size:var(--fs-mono);letter-spacing:.08em;text-transform:uppercase;
-  color:var(--t-low);text-align:center;line-height:1.45;min-height:2.9em;transition:color .35s;
+  font-family:'Archivo',sans-serif;font-weight:600;font-stretch:104%;
+  font-size:clamp(.86rem,1vw,.98rem);letter-spacing:.06em;text-transform:uppercase;
+  color:#D6DEE7;text-align:center;line-height:1.35;min-height:2.7em;transition:color .35s;
 }
+a.client{color:inherit;text-decoration:none}
+a.client:focus-visible{outline:none}
+a.client:focus-visible .client__logo{outline:2px solid var(--amber-hi);outline-offset:3px}
 .client:hover .client__logo{transform:translateY(-4px);box-shadow:0 18px 34px -16px rgba(0,0,0,.8)}
-.client:hover .client__name{color:var(--t-hi)}
+.client:hover .client__name{color:#fff}
+a.client:hover .client__logo{border-color:rgba(229,89,75,.55)}
 
 /* ============================================================
    LIFECYCLE STRIP
@@ -943,7 +963,7 @@ body.menu-open .drawer__link{animation:drawerIn .55s var(--ease-out) forwards}
 /* ============================================================
    FILM — first-paint + no-JS + reduced-motion fallbacks
    ============================================================ */
-.film__panel[data-from="0"]{opacity:1}
+.film__panel[data-from="0"]{opacity:1;visibility:visible}
 
 html.no-js .film,
 .film.is-static{height:auto!important}

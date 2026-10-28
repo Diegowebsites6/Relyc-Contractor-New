@@ -104,7 +104,7 @@ holds long enough to read. To retune:
 
 | | Desktop (`w`, 800×450) | Mobile (`m`, 480×270) |
 | --- | --- | --- |
-| Act I | 80 frames · 1.6 MB | 48 frames · 590 KB |
+| Act I | 80 frames · 3.2 MB (1280×720) | 48 frames · 1.0 MB (640×360) |
 | Act II | 64 frames · 1.3 MB | 40 frames · 480 KB |
 | Act III | 64 frames · 1.3 MB | 40 frames · 475 KB |
 | **Total** | **~3.9 MB** | **~1.3 MB** |
