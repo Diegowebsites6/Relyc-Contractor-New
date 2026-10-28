@@ -132,9 +132,11 @@ script and must match `data-frames-w` / `data-frames-m` in
 
 ### 1. Forms → email / CRM
 
-All four forms (consultation, capability statement, subcontractor registration)
-work today with **no backend**: they validate, then open the visitor's mail
-client with the fields pre-filled to `service@relyc.co`.
+All three forms (consultation, capability statement, subcontractor registration)
+post their fields as JSON to the **GoHighLevel inbound webhook** set in
+`SITE.formWebhook` (`build/build.mjs`). Each payload also carries `form_name`,
+`source`, `page_url` and `submitted_at` so one GHL workflow can route all three.
+Clear `formWebhook` and rebuild to fall back to opening the visitor's mail client.
 
 For real server-side capture, add one attribute — no JS changes:
 
@@ -180,7 +182,7 @@ find every one.
 | Item | Where |
 | --- | --- |
 | Real stat figures (5M+ SF, 100% on-time, 1,000s projects) | Home, About |
-| Logos for Fortune Metals, ISCAR GSE, Kids Spot, One Home Care Solutions, PHD Services | Home — Past Performance wall shows name-only tiles for these; drop files in `assets/img/clients/` and swap the tile markup |
+| Logo for Fortune Metals | Home — Past Performance wall shows a name-only tile (no website found); drop a file in `assets/img/clients/` and swap the tile markup |
 | UEI number · CAGE code · NAICS codes | Government & Certifications |
 | Capability Statement PDF | `assets/docs/relyc-capability-statement.pdf` — placeholder in place so the gated download works end to end |
 | Leadership bios | About — grid is built and `hidden`; remove the attribute once supplied |

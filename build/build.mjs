@@ -29,7 +29,10 @@ export const SITE = {
   founded: '2012',
   // Paste the GA4 Measurement ID here (e.g. 'G-XXXXXXXXXX') and rebuild.
   // Left blank, no analytics script is emitted at all.
-  ga4: ''
+  ga4: '',
+  // GoHighLevel inbound webhook — every site form POSTs its fields here as JSON.
+  // Blank = forms fall back to opening the visitor's email client.
+  formWebhook: 'https://services.leadconnectorhq.com/hooks/4KRtzpJ7NhPguzLhuPTk/webhook-trigger/d34d681c-9645-4100-941e-32b252ebe93e'
 };
 
 /* Primary navigation — single source of truth */
@@ -191,7 +194,8 @@ function buildPage(file) {
     LICENSE: SITE.license,
     UEI: SITE.uei,
     SITE_NAME: SITE.name,
-    LEGAL_NAME: SITE.legalName
+    LEGAL_NAME: SITE.legalName,
+    FORM_WEBHOOK: SITE.formWebhook
   };
 
   // Page bodies may reference site variables too, so fill them first.

@@ -391,8 +391,11 @@
           if (v instanceof File) { if (v.name) data[k] = v.name; return; }
           data[k] = v;
         });
-        data._page = location.pathname;
-        data._submitted = new Date().toISOString();
+        // Context for the CRM (GoHighLevel maps these in the webhook trigger)
+        data.form_name = form.dataset.formName || form.dataset.subject || 'Website form';
+        data.source = 'relyc.co website';
+        data.page_url = location.href;
+        data.submitted_at = new Date().toISOString();
 
         if (!endpoint) { mailtoFallback(form, data); return; }
 
