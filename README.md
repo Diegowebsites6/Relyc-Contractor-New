@@ -182,7 +182,6 @@ find every one.
 | Item | Where |
 | --- | --- |
 | Real stat figures (5M+ SF, 100% on-time, 1,000s projects) | Home, About |
-| Logo for Fortune Metals | Home — Past Performance wall shows a name-only tile (no website found); drop a file in `assets/img/clients/` and swap the tile markup |
 | UEI number · CAGE code · NAICS codes | Government & Certifications |
 | Capability Statement PDF | `assets/docs/relyc-capability-statement.pdf` — placeholder in place so the gated download works end to end |
 | Leadership bios | About — grid is built and `hidden`; remove the attribute once supplied |
