@@ -32,7 +32,7 @@ export const SITE = {
   ga4: '',
   // GoHighLevel inbound webhook — every site form POSTs its fields here as JSON.
   // Blank = forms fall back to opening the visitor's email client.
-  formWebhook: 'https://services.leadconnectorhq.com/hooks/4KRtzpJ7NhPguzLhuPTk/webhook-trigger/d34d681c-9645-4100-941e-32b252ebe93e'
+  formWebhook: 'https://services.leadconnectorhq.com/hooks/4KRtzpJ7NhPguzLhuPTk/webhook-trigger/7551368c-eb39-44fe-b4dd-3e79eb883755'
 };
 
 /* Primary navigation — single source of truth */
