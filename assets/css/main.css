@@ -981,3 +981,20 @@ html.no-js .film__progress,
 html.no-js .scroll-cue,
 .film.is-static .scroll-cue{display:none}
 html.no-js .preloader{display:none}
+
+/* Trades list — spaced tags instead of a run-on paragraph */
+.trades-box{margin-top:2.4rem;padding:clamp(1.3rem,2.2vw,1.8rem);border:1px solid var(--line);border-radius:var(--r-md,10px);background:var(--ink-900)}
+.trades-box__title{
+  font-family:'JetBrains Mono',monospace;font-size:var(--fs-mono);letter-spacing:.16em;text-transform:uppercase;
+  color:var(--amber-hi);margin-bottom:1.2rem;padding-bottom:1rem;border-bottom:1px solid var(--line);
+}
+.chips{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.7rem}
+.chips li{
+  display:flex;align-items:center;gap:.65rem;min-height:2.9rem;padding:.6rem .85rem;
+  font-size:.92rem;line-height:1.35;color:#D6DEE7;
+  background:var(--ink-850);border:1px solid var(--line-soft);border-radius:8px;
+  transition:border-color .3s,background .3s;
+}
+.chips li::before{content:'';flex:none;width:6px;height:6px;border-radius:50%;background:var(--amber)}
+.chips li:hover{border-color:rgba(196,63,50,.5);background:var(--ink-800)}
+@media(max-width:420px){ .chips{grid-template-columns:1fr} }
