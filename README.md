@@ -132,26 +132,18 @@ script and must match `data-frames-w` / `data-frames-m` in
 
 ### 1. Forms → email / CRM
 
-All three forms (consultation, capability statement, subcontractor registration)
-post their fields as JSON to the **GoHighLevel inbound webhook** set in
-`SITE.formWebhook` (`build/build.mjs`). Each payload also carries `form_name`,
-`source`, `page_url` and `submitted_at` so one GHL workflow can route all three.
-Clear `formWebhook` and rebuild to fall back to opening the visitor's mail client.
+The Contact page is one adaptive flow with eight inquiry paths
+(`contact.html?type=project`, `bid`, `trade`, `design`, `supplier`, `equipment`, `documents`, `general`).
+Fields and validation live in `assets/js/contact-model.js`, the trade directory in
+`assets/js/contact-config.js` and the steps in `assets/js/contact-flow.js`. Run `npm run test:contact`
+after changing the rules.
 
-For real server-side capture, add one attribute — no JS changes:
+Submissions post JSON to the GoHighLevel webhook in `SITE.formWebhook` (`build/build.mjs`): flat keys
+for mapping, `summary` as readable text and `request` as the full record. The Government capability
+statement form posts to the same webhook.
 
-```html
-<form class="form" data-form data-endpoint="https://your-endpoint">
-```
-
-The form POSTs JSON of all named fields. Any endpoint accepting JSON works
-(Formspree, Netlify Forms, Zapier/Make webhook, or a CRM intake URL). A hidden
-honeypot field (`_company_website`) silently discards bot submissions.
-
-> **Note on file uploads:** the subcontractor form's Capability Statement and COI
-> fields currently submit *file names* only, since JSON POST cannot carry binary.
-> Wiring real uploads needs an endpoint accepting `multipart/form-data` — worth
-> settling in the lead-capture working session the brief flags.
+This site has no backend, so file upload, save and resume, server validation, abuse protection and staff review are **not** built.
+The form says uploads are unavailable rather than pretending. See the 2026-10-29 developer package for the full target.
 
 ### 2. Analytics
 

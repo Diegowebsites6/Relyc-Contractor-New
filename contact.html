@@ -123,7 +123,7 @@
       <p class="eyebrow">Request a Consultation</p>
       <h1>Let's talk about your project.</h1>
       <p class="lead">
-        Tell us the scope, the sector and the date you need it by. We respond to every project
+        Choose what you need and we will ask only the relevant questions. We respond to every project
         inquiry promptly — usually the same business day.
       </p>
     </div>
@@ -198,113 +198,37 @@
 
         <div style="margin-top:2.2rem;padding-top:1.8rem;border-top:1px solid var(--line)">
           <p class="cinfo__k" style="margin-bottom:.9rem">Are you a subcontractor?</p>
-          <a class="link-arrow" href="subcontractors.html">
+          <a class="link-arrow" href="contact.html?type=trade">
             Register your trade with us
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" style="width:13px;height:13px" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
           </a>
         </div>
       </aside>
 
-      <!-- FORM -->
+      <!-- CONTACT FLOW: fields come from assets/js/contact-model.js -->
       <div class="formcard" data-reveal>
-        <form class="form" data-form
-              data-endpoint="https://services.leadconnectorhq.com/hooks/4KRtzpJ7NhPguzLhuPTk/webhook-trigger/7551368c-eb39-44fe-b4dd-3e79eb883755"
-              data-form-name="Consultation Request"
-              data-subject="Consultation request — Relyc Contractor"
-              data-success-msg="Thank you — your request has been received. We respond to every project inquiry promptly, usually the same business day."
-              novalidate>
-          <div class="hp" aria-hidden="true">
-            <label>Company website<input type="text" name="_company_website" tabindex="-1" autocomplete="off"></label>
+        <div class="cflow" data-contact-flow data-endpoint="https://services.leadconnectorhq.com/hooks/4KRtzpJ7NhPguzLhuPTk/webhook-trigger/7551368c-eb39-44fe-b4dd-3e79eb883755" data-api="" data-phone="305-558-9988" data-tel="+13055589988">
+          <div class="field">
+            <label for="cf-purpose">How can we help? <span class="req">*</span></label>
+            <select id="cf-purpose">
+              <option value="">Select an option</option>
+              <option value="project">Project Inquiry</option>
+              <option value="bid">Bid Invitation</option>
+              <option value="trade">Trade Partner Registration</option>
+              <option value="design">Architect / Engineer Inquiry</option>
+              <option value="supplier">Material Supplier / Vendor Inquiry</option>
+              <option value="equipment">Equipment Provider Inquiry</option>
+              <option value="documents">Company Document Request</option>
+              <option value="general">General Inquiry</option>
+            </select>
           </div>
-
-          <div class="form__grid">
-            <div class="field">
-              <label for="c-name">Name <span class="req">*</span></label>
-              <input id="c-name" name="name" type="text" required autocomplete="name" placeholder="Full name">
-              <span class="field__err">Please enter your name.</span>
-            </div>
-            <div class="field">
-              <label for="c-company">Company</label>
-              <input id="c-company" name="company" type="text" autocomplete="organization" placeholder="Organization">
-            </div>
-            <div class="field">
-              <label for="c-email">Email <span class="req">*</span></label>
-              <input id="c-email" name="email" type="email" required autocomplete="email" placeholder="name@company.com">
-              <span class="field__err">Please enter a valid email address.</span>
-            </div>
-            <div class="field">
-              <label for="c-phone">Phone <span class="req">*</span></label>
-              <input id="c-phone" name="phone" type="tel" required autocomplete="tel" placeholder="305-555-0100">
-              <span class="field__err">Please enter a reachable phone number.</span>
-            </div>
-
-            <div class="field">
-              <label for="c-type">Project type <span class="req">*</span></label>
-              <select id="c-type" name="project_type" required>
-                <option value="">Select one…</option>
-                <option>New construction</option>
-                <option>Renovation / Tenant improvement</option>
-                <option>Facilities repair &amp; maintenance</option>
-                <option>Other</option>
-              </select>
-              <span class="field__err">Please choose a project type.</span>
-            </div>
-            <div class="field">
-              <label for="c-sector">Sector <span class="req">*</span></label>
-              <select id="c-sector" name="sector" required>
-                <option value="">Select one…</option>
-                <option>Healthcare</option>
-                <option>Education</option>
-                <option>Industrial / Warehouse</option>
-                <option>Retail / Commercial</option>
-                <option>Government / Municipal</option>
-              </select>
-              <span class="field__err">Please choose a sector.</span>
-            </div>
-
-            <div class="field">
-              <label for="c-budget">Estimated budget range</label>
-              <select id="c-budget" name="budget">
-                <option value="">Prefer not to say</option>
-                <option>Under $250K</option>
-                <option>$250K – $1M</option>
-                <option>$1M – $5M</option>
-                <option>$5M – $20M</option>
-                <option>Over $20M</option>
-              </select>
-            </div>
-            <div class="field">
-              <label for="c-timeline">Target timeline</label>
-              <select id="c-timeline" name="timeline">
-                <option value="">Not yet defined</option>
-                <option>Immediate / Emergency</option>
-                <option>Within 3 months</option>
-                <option>3 – 6 months</option>
-                <option>6 – 12 months</option>
-                <option>12+ months</option>
-              </select>
-            </div>
-
-            <div class="field field--full">
-              <label for="c-details">Project details <span class="req">*</span></label>
-              <textarea id="c-details" name="details" required placeholder="Scope, location, square footage, constraints, key dates — whatever you have."></textarea>
-              <span class="field__err">Please tell us a little about the project.</span>
-            </div>
-          </div>
-
-          <div class="form-status" data-form-status></div>
-
-          <button class="btn btn--primary btn--full btn--lg" type="submit">
-            Request a Consultation
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-          </button>
-
-          <p class="form__note">
-            Your details go to service@relyc.co and are used only to respond to this inquiry.
-            See our <a href="privacy.html">Privacy Policy</a>. Prefer to talk now?
-            <a href="tel:+13055589988">Call 305-558-9988</a>.
-          </p>
-        </form>
+          <div data-cf-panel hidden></div>
+          <p class="sr-only" data-cf-live aria-live="polite"></p>
+          <noscript>
+            <p class="form__note">This form needs JavaScript. Call <a href="tel:+13055589988">305-558-9988</a>
+              or email <a href="mailto:service@relyc.co">service@relyc.co</a> instead.</p>
+          </noscript>
+        </div>
       </div>
 
     </div>
@@ -364,7 +288,7 @@
         <ul class="footer__list">
           <li><a href="contact.html">Request a Consultation</a></li>
           <li><a href="government.html#capability">Capability Statement</a></li>
-          <li><a href="subcontractors.html">Subcontractor Registration</a></li>
+          <li><a href="contact.html?type=trade">Subcontractor Registration</a></li>
           <li><a href="services.html">Services &amp; Trades</a></li>
           <li><a href="markets.html">Markets Served</a></li>
         </ul>
@@ -392,7 +316,7 @@
         <a href="privacy.html">Privacy Policy</a>
         <a href="terms.html">Terms of Use</a>
         <a href="accessibility.html">Accessibility</a>
-        <a href="subcontractors.html">Subcontractors</a>
+        <a href="contact.html?type=trade">Subcontractors</a>
       </nav>
     </div>
   </div>
@@ -403,6 +327,8 @@
 <script src="assets/vendor/gsap.min.js" defer></script>
 <script src="assets/vendor/ScrollTrigger.min.js" defer></script>
 <script src="assets/js/app.js" defer></script>
-
+<script src="assets/js/contact-config.js" defer></script>
+  <script src="assets/js/contact-model.js" defer></script>
+  <script src="assets/js/contact-flow.js" defer></script>
 </body>
 </html>

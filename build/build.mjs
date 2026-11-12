@@ -32,6 +32,9 @@ export const SITE = {
   ga4: '',
   // GoHighLevel inbound webhook — every site form POSTs its fields here as JSON.
   // Blank = forms fall back to opening the visitor's email client.
+  // Backend address, e.g. 'https://api.relyc.co'. Blank = forms post to formWebhook, without
+  // uploads or saved drafts. For local testing: CONTACT_API=http://localhost:8787 npm run build
+  contactApi: process.env.CONTACT_API || '',
   formWebhook: 'https://services.leadconnectorhq.com/hooks/4KRtzpJ7NhPguzLhuPTk/webhook-trigger/7551368c-eb39-44fe-b4dd-3e79eb883755'
 };
 
@@ -195,7 +198,8 @@ function buildPage(file) {
     UEI: SITE.uei,
     SITE_NAME: SITE.name,
     LEGAL_NAME: SITE.legalName,
-    FORM_WEBHOOK: SITE.formWebhook
+    FORM_WEBHOOK: SITE.formWebhook,
+    CONTACT_API: SITE.contactApi
   };
 
   // Page bodies may reference site variables too, so fill them first.

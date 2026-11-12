@@ -11,7 +11,8 @@
     "check": "node build/tools/check.mjs",
     "frames": "bash build/tools/extract-frames.sh",
     "og": "bash build/tools/make-og.sh",
-    "pdf": "node build/tools/make-pdf.mjs assets/docs/relyc-capability-statement.pdf"
+    "pdf": "node build/tools/make-pdf.mjs assets/docs/relyc-capability-statement.pdf",
+    "test:contact": "node --test build/tools/contact-model.test.mjs"
   },
   "engines": {
     "node": ">=18"
